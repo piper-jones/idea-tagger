@@ -1,0 +1,22 @@
+{
+  "blurbs": [
+    {
+      "id": "1",
+      "text": "I am the first blurb"
+    },
+    {
+      "id": "2",
+      "text": "I am the second blurb"
+    },
+    {
+      "id": "3",
+      "text": "This is my new blurb"
+    },
+    {
+      "id": "4",
+      "text": "blurb no 4 is here"
+    }
+  ],
+  "cosine_graph": [],
+  "jaccard_graph": []
+}

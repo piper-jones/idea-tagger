@@ -1,31 +1,44 @@
-# idea-tagger
-Run this CLI to write and save short notes, blurbs, quotes, etc. Then, get metrics on the similarity scores, find similar words, and generate a similarity graph of your notebook (coming soon).
+idea-tagger
 
-Current run instructions (Windows Powershell):
+A command-line notebook for short notes, blurbs, and quotes. Compute similarity metrics between entries, fetch similar words (via a small Go helper), and (soon) generate a similarity graph of your notebook.
 
-**Installations**
+**Features**
 
-Installed Golang from: https://go.dev/doc/install
-Using C++: c++.exe (x86_64-posix-seh-rev0, Built by MinGW-W64 project) 7.3.0
+Add and persist blurbs/quotes
 
-VCPKG Libraries:
+Compute Cosine and Jaccard similarity between recent entries
+
+Get similar words for the latest blurb (via a bundled Go binary)
+
+Graph generation coming soon
+
+**Prerequisites (Windows / PowerShell)**
+
+C++ toolchain: MinGW-w64 (e.g., g++ (x86_64-posix-seh) 7.3.0)
+Go: Install from the official guide → https://go.dev/doc/install
+vcpkg (for C++ deps): CLI11 and nlohmann-json
+
+**Setup**
+1) Install vcpkg and libraries
 git clone https://github.com/Microsoft/vcpkg.git
 cd vcpkg
 .\bootstrap-vcpkg.bat
 .\vcpkg.exe integrate install
-.\vcpkg.exe install cli11
-.\vcpkg install nlohmann-json
 
-**Build & Run Commands**
+2) Libraries
+.\vcpkg.exe install cli11
+.\vcpkg.exe install nlohmann-json
+
+*vcpkg currently a submodule
+
+**Build & Run (C++ CLI)**
+
+From the project root:
 
 mingw32-make
+
 .\idea_tagger.exe
 
-Old command before Makefile was added:
-g++ -std=c++17 -Wall -Wextra -O2 *.cpp -o main.exe  
-
-**Tesing Go Files:**
-go mod init apimodule                 
-go build -o wordmuse.exe .\cmd\wordmuse
-.\wordmuse.exe --term pineapple+pizza
-(pineapple+pizza is example of where any sstring can go, with "+" as space)
+The Makefile builds idea_tagger.exe.
+(Legacy one-liner without Makefile:
+g++ -std=c++17 -Wall -Wextra -O2 *.cpp -o main.exe)
